@@ -1,0 +1,39 @@
+<div class="chatbot-container">
+  <div class="chatbot-header">
+    <div class="header-icon">🦠</div>
+    <div class="header-title">
+      <h2>VacciWiz</h2>
+      <p>Your Virus Fighting Wizard</p>
+    </div>
+  </div>
+
+  <div class="messages-container" #scrollMe>
+    @for (message of messages$ | async; track message.timestamp) {
+    <div class="message"
+         [ngClass]="[message.sender, message.type || '']">
+      <div class="message-content">
+        @if (message.type === 'warning') {
+        <span class="warning-icon">⚠️</span>
+        }
+        {{ message.content }}
+      </div>
+      <div class="message-time">
+        {{ message.timestamp | date:'shortTime' }}
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="chatbot-input">
+    <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
+      <input type="text" [(ngModel)]="newMessage" name="message" [placeholder]="'Ask about virus protection...'" [disabled]="isLoading">
+      <button type="submit" [disabled]="!newMessage || isLoading">
+        @if (isLoading) {
+        <span class="loading-spinner"></span>
+        } @else {
+        Send
+        }
+      </button>
+    </form>
+  </div>
+</div>

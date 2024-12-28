@@ -1,0 +1,16 @@
+.score-board {
+    margin-bottom: 10px;
+    padding: 2px;
+    border: 1px solid black;
+    background: #f9f9f9;
+    align-self: auto;
+    margin-top: 25px;
+}
+
+.score-board h3 {
+    text-align: center; 
+    color: #3d023d; 
+    font-size: 24px; 
+    margin: 0; 
+    text-decoration: underline;
+  }

@@ -1,0 +1,48 @@
+<nav class="nav-container">
+    <div class="nav-content">
+        <div class="nav-items">
+            <button *ngFor="let item of navigationItems" #navItem class="nav-button" (mouseenter)="onNavHover(navItem)"
+                (mouseleave)="onNavLeave(navItem)" (click)="onNavClick(item.route)">
+                {{ item.label }}
+            </button>
+        </div>
+        <button class="wallet-button" >
+            Leaderboard
+        </button>
+    </div>
+</nav>
+
+<div class="game-container">
+    <app-scoring [revealedCells]="revealedCells" [timeElapsed]="timeElapsed" [totalMines]="mineCount"></app-scoring>
+    <div class="grid">
+        <div *ngFor="let row of grid; let rowIndex = index">
+            <div class="cell" *ngFor="let cell of row; let colIndex = index"
+                [class.mine]="cell.isMine && cell.isRevealed" [class.revealed]="cell.isRevealed"
+                (click)="revealCell(rowIndex, colIndex)">
+                <span *ngIf="cell.isRevealed && !cell.isMine">{{ cell.adjacentMines || '' }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" *ngIf="isModalVisible">
+    <div class="modal-content">
+        <h2>{{ alertMessage }}</h2>
+        <div class="button-container">
+            <button class="close-button" (click)="playAgain()">Play Again</button>
+            <button class="close-button" (click)="closeModal()">Back to Home</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" *ngIf="initialModalVisible">
+    <div class="modal-content">
+        <h1 style="color: rgb(102, 4, 86);"> Welcome! </h1>
+        <h2>Are you ready?
+        </h2>
+        <div class="button-container">
+            <button class="close-button" (click)="startGame()">Yes! Start</button>
+            <button class="close-button" (click)="closeModal()">No, Back to Home</button>
+        </div>
+    </div>
+</div>

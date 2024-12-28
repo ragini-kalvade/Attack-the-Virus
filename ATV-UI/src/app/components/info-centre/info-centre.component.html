@@ -1,0 +1,14 @@
+<nav class="nav-container">
+    <div class="nav-content">
+        <div class="nav-items">
+            <button *ngFor="let item of navigationItems" #navItem class="nav-button" (mouseenter)="onNavHover(navItem)"
+                (mouseleave)="onNavLeave(navItem)" (click)="onNavClick(item.route)">
+                {{ item.label }}
+            </button>
+        </div>
+        <button class="wallet-button">
+            Leaderboard
+        </button>
+    </div>
+</nav>
+<app-info-card-slideshow></app-info-card-slideshow>

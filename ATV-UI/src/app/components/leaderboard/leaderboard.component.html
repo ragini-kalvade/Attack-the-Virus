@@ -1,0 +1,34 @@
+<nav class="nav-container">
+    <div class="nav-content">
+        <div class="nav-items">
+            <button *ngFor="let item of navigationItems" #navItem class="nav-button" (mouseenter)="onNavHover(navItem)"
+                (mouseleave)="onNavLeave(navItem)" (click)="onNavClick(item.route)">
+                {{ item.label }}
+            </button>
+        </div>
+        <button class="wallet-button">
+            Leaderboard
+        </button>
+    </div>
+</nav>
+
+<div class="leaderboard-container">
+  <h1>LEADERBOARD</h1>
+  <table class="table table-striped table-hover table-bordered text-center">
+      <thead>
+      <tr>
+          <th>USERNAME</th>
+          <th>SCORE</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let player of leaderboardData">
+          <td>{{ player.username }}</td>
+          <td>{{ player.score }}</td>
+      </tr>
+      </tbody>
+  </table>
+
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>
+

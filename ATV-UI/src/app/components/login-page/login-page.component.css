@@ -1,0 +1,80 @@
+.content-box {
+    position: relative;
+    background-color: white;
+    /* White box */
+    width: 55%;
+    /* 60% of the screen */
+    margin: 30px;
+    /* Space around the content box */
+    padding: 20px;
+    /* Internal padding for the content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Slight shadow for a lifted effect */
+    z-index: 1;
+    /* Ensure it appears above the video */
+    border-radius: 10px;
+    /* Optional: rounded corners */
+    height: 85vh;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+}
+
+.section-heading {
+    text-align: center;
+    /* Align text to the left */
+}
+
+h1,
+h2 {
+    color: black;
+    /* Set the text color to black */
+}
+
+.button {
+    background-color: rgb(245, 79, 184);
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+    font-size: large;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: rgb(245, 79, 184);
+}
+
+.fa-heading {
+    font-family: 'FontAwesome';
+    /* Use the defined Font Awesome font */
+    font-size: 5em;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+    /* Make sure the weight matches your design */
+    color: rgb(71, 1, 71);
+    /* Set the text color */
+    margin-bottom: 20px;
+    /* Optional spacing below the heading */
+    margin-top: 10px;
+    text-align: center;
+    /* Center the heading */
+}
+
+input {
+    width: 100%; /* Full width of the container */
+    padding: 15px; /* Increase padding for larger input */
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; /* Increase font size for better visibility */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin-bottom: 20px; /* Spacing between input fields */
+}

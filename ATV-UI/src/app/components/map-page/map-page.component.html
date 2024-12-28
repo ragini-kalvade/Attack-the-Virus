@@ -1,0 +1,27 @@
+<nav class="nav-container">
+  <div class="nav-content">
+    <div class="nav-items">
+      <button *ngFor="let item of navigationItems" #navItem class="nav-button" (mouseenter)="onNavHover(navItem)"
+        (mouseleave)="onNavLeave(navItem)" (click)="onNavClick(item.route)">
+        {{ item.label }}
+      </button>
+    </div>
+    <button class="wallet-button" (click)='navigateToLeaderboard()'>
+      Leaderboard
+    </button>
+  </div>
+</nav>
+
+<div class="game-background">
+  <video autoplay muted loop id="bgVideo">
+    <source src="ATV-UI/src/assets/images/banner-images/background-animation.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="content-overlay">
+    <header class="game-header">
+      <!-- <h1 class="game-title">ATTACK THE VIRUS</h1> -->
+      <h1 style="text-align: center; color: white; font-family: 'Roboto', sans-serif;">Clinics Near You</h1>
+    </header>
+  </div>
+</div>

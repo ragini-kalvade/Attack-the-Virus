@@ -1,0 +1,66 @@
+.nav-container {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    padding: 0.9rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+.nav-content {
+    max-width: 1500px;
+    margin: 0.3rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-button {
+    padding: 0.5rem 1rem;
+    color: #5FF3FF;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #5FF3FF;
+    transition: width 0.3s ease;
+}
+
+.nav-button:hover::after {
+    width: 100%;
+}
+
+.wallet-button {
+    padding: 0.5rem 1rem;
+    background: rgba(147, 51, 234, 0.3);
+    border: 1px solid rgba(255, 0, 255, 0.4);
+    color: #FF9ECD;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wallet-button:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    background: rgba(147, 51, 234, 0.4);
+}

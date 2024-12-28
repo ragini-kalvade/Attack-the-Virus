@@ -1,0 +1,44 @@
+<nav class="nav-container">
+    <div class="nav-content">
+        <div class="nav-items">
+            <button *ngFor="let item of navigationItems" #navItem class="nav-button" (mouseenter)="onNavHover(navItem)"
+                (mouseleave)="onNavLeave(navItem)" (click)="onNavClick(item.route)">
+                {{ item.label }}
+            </button>
+        </div>
+        <button class="wallet-button" (click)='navigateToLeaderboard()'>
+            Leaderboard
+        </button>
+    </div>
+</nav>
+
+<div class="content-overlay">
+    <button class="start-button" (click)="navigateToVirusBreaker()">
+        <span class="button-text">VIRUS-BREAKER</span>
+    </button>
+    <p class="game-description">
+        The Ultimate Immunity Challenge! <br>
+        In Virus Breaker, a twist on the classic brick breaker, you’ll swap bricks for bacteria and obliterate viruses
+        with each hit of the ball. </p>
+
+    <br>
+
+    <button class="start-button" (click)="navigateToVirusSweeper()">
+        <span class="button-text">VIRUS-SWEEPER</span>
+    </button>
+    <p class="game-description">
+        The Ultimate Contamination Cleanup! <br>
+        In Virus-Sweeper, a reimagining of the classic Minesweeper, strategize your way through an
+        infected grid. Reveal safe cells, avoid the viruses, and disinfect the board to emerge as the
+        ultimate pathogen eliminator! </p>
+    <br>
+    <button class="start-button" (click)="navigateToVirusSimulator()">
+        <span class="button-text">VIRUS-PANIC</span>
+    </button>
+    <p class="game-description">
+        The Ultimate Math Challenge!<br>
+        The virus is spreading fast—only your math skills can stop it! Solve the math problems before 
+        the virus takes over the entire grid! Every correct answer eradicates the virus from one 
+        infected cell, but the clock is ticking. Can you save the grid before it's too late? 
+        The more problems you solve, the fewer cells the virus will infect.</p>
+</div>

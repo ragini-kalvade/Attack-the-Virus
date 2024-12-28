@@ -1,0 +1,64 @@
+<div class="game-background">
+  <video autoplay muted loop id="bgVideo">
+    Your browser does not support the video tag.
+  </video>
+  <app-preloader *ngIf="showPreloader"></app-preloader>
+
+  <div class="content-overlay">
+    <div class="game-header">
+      <h1 class="game-title">ATTACK THE VIRUS</h1>
+      <h2 class="game-subtitle">Test Your Shots: How Strong Are Your Biology and Math Skills?</h2>
+    </div>
+
+    <div class="game-stats">
+      <div class="stat-item">
+        <span class="stat-label">Levels</span>
+        <span class="stat-value">20</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Viruses</span>
+        <span class="stat-value">20+</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Vaccines</span>
+        <span class="stat-value">15+</span>
+      </div>
+    </div>
+
+    <div class="carousel">
+      <button
+        class="carousel-button prev"
+        (click)="prev()"
+        [disabled]="isAnimating">
+        ←
+      </button>
+
+      <div class="carousel-content">
+        <div class="menu-card"
+             [style.opacity]="isAnimating ? 0.5 : 1"
+             (click)="navigateTo(currentSlide.route)">
+          <div class="card-icon">{{currentSlide.icon}}</div>
+          <h3 class="card-title">{{currentSlide.title}}</h3>
+          <p class="card-description">{{currentSlide.description}}</p>
+        </div>
+      </div>
+
+      <button
+        class="carousel-button next"
+        (click)="next()"
+        [disabled]="isAnimating">
+        →
+      </button>
+    </div>
+
+    <div class="carousel-indicators">
+      <button
+        *ngFor="let item of menuItems; let i = index"
+        class="carousel-dot"
+        [class.active]="i === currentIndex"
+        (click)="goToSlide(i)">
+      </button>
+    </div>
+
+  </div>
+</div>

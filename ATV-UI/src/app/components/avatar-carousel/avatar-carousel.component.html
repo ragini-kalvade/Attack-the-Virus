@@ -1,0 +1,88 @@
+<div class="page">
+  <nav class="nav-container">
+    <div class="nav-content">
+      <div class="nav-items">
+        <ng-container *ngFor="let item of navigationItems">
+          <button
+            class="nav-button"
+            (click)="onNavClick(item.route)"
+            (mouseenter)="onNavHover($event.target)"
+            (mouseleave)="onNavLeave($event.target)"
+            #navItem
+          >
+            {{ item.label }}
+          </button>
+        </ng-container>
+      </div>
+      <button class="wallet-button" (click)="navigateToLeaderboard()">
+        Leaderboard
+      </button>
+    </div>
+  </nav>
+
+  <div class="content-overlay">
+    <ng-container *ngIf="!hasSelectedAvatar; else selectedTemplate">
+      <div class="carousel-and-buttons">
+        <button
+          (click)="left()"
+          [disabled]="!enableCarouselButtons"
+          class="carousel-button"
+          aria-label="Previous avatar"
+        >
+          ‹
+        </button>
+
+        <div class="carousel">
+          <div
+            #carouselItem
+            *ngFor="let i of [0,1,2]"
+            class="carousel-item"
+            [class.active]="i === currentAvatarIndex"
+          >
+            <img
+              [src]="'./assets/images/avatar/' + i + '.png'"
+              class="avatar-img"
+              [alt]="'Avatar ' + i"
+            />
+          </div>
+        </div>
+
+        <button
+          (click)="right()"
+          [disabled]="!enableCarouselButtons"
+          class="carousel-button"
+          aria-label="Next avatar"
+        >
+          ›
+        </button>
+      </div>
+
+      <div class="current-avatar">
+        Current avatar: {{currentAvatarIndex}}
+      </div>
+
+      <div class="avatar-controls">
+        <button class="select-button" (click)="selectCurrentAvatar()">
+          Select This Avatar
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #selectedTemplate>
+      <div class="selection-confirmation">
+        <div class="checkmark">✓</div>
+        <h3>Avatar Selected!</h3>
+        <p>You've chosen Avatar {{currentAvatarIndex}}</p>
+        <button class="change-button" (click)="changeAvatar()">
+          Change Avatar
+        </button>
+        <button class="change-button" (click)="startQuiz()">
+          Start Your Mission!
+        </button>
+      </div>
+    </ng-template>
+  </div>
+
+</div>
+<app-preloader *ngIf="showPreloader"></app-preloader>
+

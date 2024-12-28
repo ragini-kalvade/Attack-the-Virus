@@ -1,0 +1,92 @@
+<nav class="nav-container">
+  <div class="nav-content">
+    <div class="nav-items">
+      <button *ngFor="let item of navigationItems"
+              #navItem
+              class="nav-button"
+              (mouseenter)="onNavHover(navItem)"
+              (mouseleave)="onNavLeave(navItem)"
+              (click)="onNavClick(item.route)">
+        {{ item.label }}
+      </button>
+    </div>
+    <button class="wallet-button">
+      Leaderboard
+    </button>
+  </div>
+</nav>
+
+<div class="quiz-wrapper">
+  <div class="quiz-container">
+    <div class="quiz-content">
+      <div class="avatar-container">
+        <div class="avatar-display">
+          <img [src]="'./assets/images/avatar/' + currentAvatarIndex + '.png'" [alt]="'Avatar ' + currentAvatarIndex"
+            class="quiz-avatar-image">
+        </div>
+      </div>
+
+      <div class="question-section">
+        <h2 class="game-title">ATTACK THE VIRUS</h2>
+        <div class="status-bar">
+          <div class="health-bar">
+            <div class="health-fill" [style.width.%]="health"></div>
+          </div>
+          <div class="timer">Time left: {{ timeLeft }}s</div>
+        </div>
+
+        <div *ngIf="!quizCompleted">
+          <h3>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h3>
+          <p class="question-text">{{ currentQuestion.text }}</p>
+          <ul class="options-list">
+            <li *ngFor="let option of currentQuestion.options; let i = index">
+              <button (click)="answerQuestion(i)" [disabled]="answered" class="option-button">{{ option }}</button>
+            </li>
+          </ul>
+          <p [ngClass]="{'correct': feedback === 'Correct!', 'incorrect': feedback !== 'Correct!'}" *ngIf="answered">{{
+            feedback }}</p>
+          <button *ngIf="answered" (click)="nextQuestion()" class="next-button">Next Question</button>
+        </div>
+
+        <div *ngIf="quizCompleted" class="quiz-completed">
+          <h3>Quiz Completed!</h3>
+          <p>Your score: {{ score }} out of {{ questions.length }}</p>
+          <p>Health remaining: {{ health }}%</p>
+          <button (click)="restartQuiz()" class="restart-button">Restart Quiz</button>
+          <button (click)="navigateToLeaderboard()" class="restart-button">Go To Leaderboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showModal" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>{{ feedback }}</h3>
+    <p>{{ fact }}</p>
+  </div>
+</div>
+
+
+<div class="modal-overlay-username" *ngIf="isModalOpen">
+  <div class="modal">
+    <h1>Welcome!</h1>
+    <h4>
+    <label for="name">Enter your name:</label><br>
+    <input
+      id="name"
+      type="text"
+      [(ngModel)]="name"
+      (input)="onNameInput()"
+      placeholder="Your Name"
+      style="width: 300px; height: 40px;"
+    /></h4>
+    <button class = 'button-username' 
+    [disabled]="!isNameValid" 
+    (click)="startGame()"
+    style="width: 150px; height: 50px; font-size: 20px; padding: 10px; margin-right: 60px;">Let's Begin!</button>
+    <button class = 'button-username' 
+    (click)="navigateToHome()"
+    style="width: 150px; height: 50px; font-size: 20px; padding: 10px;">Cancel</button>
+  </div>
+</div>
